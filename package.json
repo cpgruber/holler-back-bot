@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.13.3",
-    "node-twitterbot": "^0.2.2",
     "twit": "^2.1.1"
   }
 }
