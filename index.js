@@ -1,5 +1,6 @@
 var fs = require("fs");
 var Twit = require('twit');
+var express = require("express");
 var env = fs.existsSync("./env.js") ? require("./env") : process.env;
 
 var Bot = new Twit({
@@ -46,4 +47,10 @@ stream.on('tweet', function (tweet) {
     var modTweet = ("@"+asker+": "+tweet).substring(0,139);
     post(modTweet, id)
   });
+});
+
+var app = express();
+var port = process.env.PORT || 4000;
+app.listen(port, function() {
+  console.log("Listening on " + port);
 });
