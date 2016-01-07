@@ -1,15 +1,12 @@
+var fs = require("fs");
 var Twit = require('twit');
-var env = require("./env.js")
+var env = fs.existsSync("./env.js") ? require("./env") : process.env;
 
 var Bot = new Twit({
   consumer_key: env.consumer_key,
   consumer_secret: env.consumer_secret,
   access_token: env.access_token,
   access_token_secret: env.access_token_secret
-  // consumer_key:         process.env.SWTITLEBOT_CONSUMER_KEY,
-  // consumer_secret:      process.env.SWTITLEBOT_CONSUMER_SECRET,
-  // access_token:         process.env.SWTITLEBOT_ACCESS_TOKEN,
-  // access_token_secret:  process.env.SWTITLEBOT_ACCESS_TOKEN_SECRET
 });
 
 function post (content,reply_id) {
@@ -39,7 +36,7 @@ function search (hashtag) {
   })
 }
 
-var stream = Bot.stream('statuses/filter', { track: '@slouchlife' });
+var stream = Bot.stream('statuses/filter', { track: '@hollerbackbot' });
 stream.on('tweet', function (tweet) {
   var asker = tweet.user.screen_name;
   var id = tweet.id_str;
