@@ -1,15 +1,16 @@
 {
-  "name": "twitter-troll",
+  "name": "holler-back-bot",
   "version": "1.0.0",
-  "description": "",
+  "description": "Tweet a handle preceded by a hashtag (ex. #cpgrubes), and it will holler back with a random tweet from that handle",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Chase Gruber",
   "license": "ISC",
   "dependencies": {
     "express": "^4.13.3",
+    "fs": "0.0.2",
     "twit": "^2.1.1"
   }
 }
