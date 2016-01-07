@@ -14,9 +14,6 @@ var Bot = new Twit({
 
 function post (content,reply_id) {
   Bot.post('statuses/update', { status: content, in_reply_to_status_id: reply_id }, function(err, data, response) {
-    console.log(err)
-    console.log("********")
-    console.log(data)
     console.log("tweeted!")
   })
 }
@@ -50,18 +47,6 @@ stream.on('tweet', function (tweet) {
   var hashtag = tweet.text.split(" ").filter(function(d){return d[0]=="#"})[0];
   search(hashtag).then(function(tweet){
     var modTweet = ("@"+asker+": "+tweet).substring(0,139);
-    console.log(modTweet)
     post(modTweet, id)
-  })
-  // post("@"+asker+": I heard that.",id)
-
-  // var text = tweet.text;
-  // var hashtag = tweet.text.split(" ").filter(function(d){return d[0]=="#"})[0];
-  // console.log(hashtag)
-  // console.log(asker + " tweeted: " + text);
-  // search(hashtag).then(function(content){
-  //   var reply = "@"+asker+": "+content;
-  //   console.log(reply)
-  //   post(reply);
-  // });
+  });
 });
